@@ -1,0 +1,184 @@
+<mat-toolbar color="primary">
+  <span>User Form</span>
+</mat-toolbar>
+
+<mat-card>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+    <mat-stepper
+      class="example-stepper"
+      [orientation]="(stepperOrientation | async)!"
+    >
+      <mat-step label="Fill out your First Name and Last Name">
+        <mat-form-field class="form-element">
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            placeholder="First name"
+            formControlName="firstName"
+            required
+          />
+          <mat-error
+            *ngIf="registerForm.controls['firstName'].hasError('required')"
+            >First Name is required</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field class="form-element">
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            placeholder="Last name"
+            formControlName="lastName"
+            required
+          />
+          <mat-error
+            *ngIf="registerForm.controls['lastName'].hasError('required')"
+            >Last Name is required</mat-error
+          >
+        </mat-form-field>
+        <div>
+          <button type="button" mat-flat-button color="primary" matStepperNext>
+            Next
+          </button>
+        </div>
+      </mat-step>
+      <mat-step label="Fill out your Email and Password">
+        <mat-form-field class="form-element">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            placeholder="Email"
+            required
+          />
+          <mat-error *ngIf="registerForm.controls['email'].hasError('required')"
+            >Email is required</mat-error
+          >
+          <mat-error *ngIf="registerForm.controls['email'].hasError('email')"
+            >Email is invalid</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field class="form-element">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Password"
+            formControlName="password"
+          />
+          <mat-icon matSuffix (click)="togglePasswordVisibility()">{{
+            showPassword ? "visibility_off" : "visibility"
+          }}</mat-icon>
+          <mat-error
+            *ngIf="registerForm.controls['password'].hasError('required')"
+            >Password is required</mat-error
+          >
+
+          <mat-error
+            *ngIf="registerForm.controls['password'].hasError('minlength')"
+            >Minimum length should be 8</mat-error
+          >
+        </mat-form-field>
+        <div>
+          <button
+            type="button"
+            mat-flat-button
+            color="warn"
+            class="mr-1"
+            matStepperPrevious
+          >
+            Back
+          </button>
+          <button
+            type="button"
+            mat-flat-button
+            color="primary"
+            class="mr-1"
+            matStepperNext
+          >
+            Next
+          </button>
+        </div>
+      </mat-step>
+      <mat-step label="Fill out your Phone Number and City">
+        <mat-form-field class="form-element">
+          <mat-label>Phone Number</mat-label>
+          <input
+            matInput
+            formControlName="phoneNumber"
+            placeholder="Ex. 9087474743"
+            required
+          />
+          <mat-error
+            *ngIf="registerForm.controls['phoneNumber'].hasError('required')"
+            >Phone Number is required</mat-error
+          >
+
+          <mat-error
+            *ngIf="
+              registerForm.controls['phoneNumber'].hasError('maxlength') ||
+              registerForm.controls['phoneNumber'].hasError('pattern') ||
+              registerForm.controls['phoneNumber'].hasError('minlength')
+            "
+            >Please enter valid phone Number</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field class="form-element">
+          <mat-label>City</mat-label>
+          <textarea
+            matInput
+            type="city"
+            placeholder="city"
+            formControlName="city"
+          ></textarea>
+          <mat-error *ngIf="registerForm.controls['city'].hasError('required')"
+            >City is required</mat-error
+          >
+        </mat-form-field>
+        <div>
+          <button
+            type="button"
+            mat-flat-button
+            color="warn"
+            class="mr-1"
+            matStepperPrevious
+          >
+            Back
+          </button>
+          <button
+            type="button"
+            mat-flat-button
+            color="primary"
+            class="mr-1"
+            matStepperNext
+          >
+            Next
+          </button>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Submit</ng-template>
+        <p class="text-green" *ngIf="registerForm.valid">
+          Please submit the Form.
+        </p>
+        <p class="text-red" *ngIf="!registerForm.valid">
+          Please fill all the details to submit!
+        </p>
+        <div>
+          <button mat-flat-button color="warn" class="mr-1" matStepperPrevious>
+            Back
+          </button>
+          <button
+            mat-flat-button
+            color="primary"
+            type="submit"
+            class="mr-1"
+            matStepperPrevious
+            [disabled]="!registerForm.valid"
+          >
+            Submit
+          </button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </form>
+</mat-card>

@@ -1,0 +1,21 @@
+.example-stepper {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+.form-element {
+  padding: 5px 0px 25px 2px;
+  width: 50%;
+}
+.mr-1 {
+  margin-right: 1%;
+}
+
+.text-green {
+  color: green;
+}
+.text-red {
+  color: red;
+}

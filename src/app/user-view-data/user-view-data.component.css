@@ -1,0 +1,32 @@
+table {
+  width: 100%;
+}
+td,
+th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.mat-sort-header-container {
+  justify-content: center !important;
+}
+th {
+  color: white;
+  font-weight: 500;
+  font-size: medium;
+}
+
+th.mat-header-cell,
+td.mat-cell {
+  border: 1px solid #ccc;
+  padding: 0 !important;
+}
+button {
+  margin: 20px 50%;
+}
+.toolbar {
+  flex: 1 1 auto;
+}
+button.mat-icon-button {
+  margin-left: 0px !important;
+}
